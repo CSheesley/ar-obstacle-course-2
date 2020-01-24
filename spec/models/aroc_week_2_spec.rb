@@ -20,6 +20,8 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    orders_of_user_3 = Order.where('user_id == ?', @user_3.id)
+    orders_of_user_3 = Order.where(user_id: @user_3.id)
     # ------------------------------------------------------------
 
     # Expectation
@@ -39,6 +41,8 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    orders = Order.order('amount DESC')
+    orders = Order.order(amount: :desc)
     # ------------------------------------------------------------
 
     # Expectation
@@ -58,6 +62,8 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    orders = Order.order('amount ASC')
+    orders = Order.order(amount: :asc)
     # ------------------------------------------------------------
 
     # Expectation
@@ -77,6 +83,8 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    items = Item.where('id NOT IN (?)', items_not_included)
+    items = Item.where.not(id: items_not_included)
     # ------------------------------------------------------------
 
     # Expectation
