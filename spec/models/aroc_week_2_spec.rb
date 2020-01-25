@@ -101,6 +101,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    grouped_items = Item.joins(:orders).where('orders.id = ?', @order_3.id).group(:name)
     # ------------------------------------------------------------
 
     # Expectation
@@ -116,6 +117,9 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    # in case they were not already alphabetized
+    names = Item.order(name: :asc).pluck(:name)
+    names = Item.pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
@@ -153,6 +157,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    names = Item.joins(:orders).pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
