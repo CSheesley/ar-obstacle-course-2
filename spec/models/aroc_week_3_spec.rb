@@ -28,6 +28,8 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    users = Item.joins(orders: :user).where(id: @item_8.id).pluck('users.name').uniq.sort
+    users = User.joins(orders: :items).where('items.id = ?', @item_8.id).pluck(:name).uniq.sort
     # ------------------------------------------------------------
 
     # Expectation
@@ -44,6 +46,8 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    names = Order.joins(:items).where(id: Order.last.id).pluck('items.name')
+    names = Item.joins(:orders).where('orders.id = ?', Order.last.id).pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
@@ -68,6 +72,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    # items_for_user_3_third_order = Item.joins(orders: :user)
     # ------------------------------------------------------------
 
     # Expectation
